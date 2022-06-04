@@ -4,9 +4,11 @@
 
 - 过滤器配置使用DelegatingFilterProxy代理，过滤器加入IOC即可使用
 - 集成lombok + logback
+- 集成swagger2，通过配置文件属性开启/关闭以及配置swagger2
+- 封装Mybatis逆向工程代码（见单元测试代码），直接调用util工具类生成代码和mapper，demo中附逆向工程配置文件，都有常用配置及说明
 - 附单元测试配置
 
-PS：单元测试配置的不足：由于过滤器配置在`WebApplicationInitializer`接口（Java类配置的关键接口）的实现类中，目前没找到使用该接口进行初始化操作进行单元测试的方法（反正没找着文档，源码里也没见着），所以http接口的单元测试中过滤器是不生效的
+PS：单元测试配置的不足：java类配置的核心是继承`org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer`以扩展Spring的`org.springframework.web.WebApplicationInitializer` web应用初始化接口 ，目前没找到使用该接口进行初始化操作进行单元测试的方法（反正没找着文档，源码里也没见着），所以http接口的单元测试中过滤器是不生效的
 
 class
 
