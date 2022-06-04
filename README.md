@@ -19,8 +19,8 @@ ws.ssm.scaffolding
 | | |-mybatis  #mybatis配置
 | |-swagger  #swagger配置
 | |-web  #mvc配置
-| |-example #demo示例
-| |-initializer  #servlet初始化相关
+|-example #demo示例
+|-initializer  #servlet初始化相关
 ```
 
 resources
