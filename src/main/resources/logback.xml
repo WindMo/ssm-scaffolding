@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<configuration debug="false">
+    <!--控制台日志 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                <!--日志输出格式-->
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- INFO级别日志,记录INFO级别及比INFO更高级别的日志-->
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+        </filter>
+        <!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+        <!--            <fileNamePattern>-->
+        <!--                &lt;!&ndash;日志引文件路径&ndash;&gt;-->
+        <!--                C:\workspace\logs\%d{yyyy-MM-dd}\dp.log-->
+        <!--            </fileNamePattern>-->
+        <!--            &lt;!&ndash; 日志保存15天，超过15天自动删除 &ndash;&gt;-->
+        <!--            <maxHistory>15</maxHistory>-->
+        <!--        </rollingPolicy>-->
+        <encoder>
+            <pattern>
+                <!--日志输出格式-->
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- ERROR级别日志,只记录Error级别日志 -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 过滤器,只记录ERROR级别的日志,如果日志级别等于配置级别，过滤器会根据onMath 和 onMismatch接收或拒绝日志 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+        <!--            <fileNamePattern>-->
+        <!--                &lt;!&ndash;日志文件路径&ndash;&gt;-->
+        <!--                C:\workspace\logs\%d{yyyy-MM-dd}\dp.error.log-->
+        <!--            </fileNamePattern>-->
+        <!--            &lt;!&ndash; 日志保存15天，超过15天自动删除 &ndash;&gt;-->
+        <!--            <maxHistory>15</maxHistory>-->
+        <!--        </rollingPolicy>-->
+        <encoder>
+            <pattern>
+                <!--日志输出格式-->
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <root>
+        <!-- 日志级别 -->
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="INFO"/>
+        <appender-ref ref="ERROR"/>
+    </root>
+    <!--  指定mapper日志级别  -->
+    <logger name="ws.ssm.scaffolding.example.mapper" level="DEBUG"></logger>
+    <logger name="springfox.documentation" level="ERROR"></logger>
+    <logger name="org.springframework.test" level="ERROR"></logger>
+
+</configuration>

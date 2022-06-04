@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="testTables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.100.100:3306/ws_springmvc?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8&amp;useSSL=false&amp;verifyServerCertificate=false&amp;autoReconnct=true&amp;autoReconnectForPools=true&amp;allowMultiQueries=true"
+                        userId="root"
+                        password="root123456">
+        </jdbcConnection>
+
+        <!--
+            默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，
+            为 true时把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+         -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!--targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="ws.springmvc.demo.pojo.domain"
+                            targetProject="D:\program\JAVA\项目\ws-springmvc\annotation-ssm-demo\src\test">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="ws.springmvc.demo.dao.mapper.xml"
+                         targetProject="D:\program\JAVA\项目\ws-springmvc\annotation-ssm-demo\src\test">
+            <!--enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="ws.springmvc.demo.dao.mapper"
+                             targetProject="D:\program\JAVA\项目\ws-springmvc\annotation-ssm-demo\src\test">
+            <!--enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <!-- 指定数据库表 -->
+        <!--        <table tableName="tb_finance_info">-->
+        <!--
+            常用：
+            property:将所有字段逆向生成为类属性，默认全部
+            ignoreColumn:生成时忽略列字段
+         -->
+        <!--   去除表前缀     -->
+        <!--        <domainObjectRenamingRule searchString="^Tb" replaceString=""/>-->
+        <!--        </table>-->
+        <!--        <table schema="" tableName="tb_finance_info"><domainObjectRenamingRule searchString="^Tb" replaceString=""/></table>-->
+        <!--        <table schema="" tableName="tb_user"><domainObjectRenamingRule searchString="^Tb" replaceString=""/></table>-->
+
+        <table schema="" tableName="tb_user" domainObjectName="User">
+            <property name="useActualColumnNames" value="true"/>
+            <domainObjectRenamingRule searchString="^Tb" replaceString=""/>
+        </table>
+        <!--        <table schema="" tableName="tb_user">-->
+        <!--            <property name="useActualColumnNames" value="true" />-->
+        <!--            <domainObjectRenamingRule searchString="^Tb" replaceString=""/>-->
+        <!--        </table>-->
+    </context>
+</generatorConfiguration>
