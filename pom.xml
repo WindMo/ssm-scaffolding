@@ -7,6 +7,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>WS-Spring::ssm-scaffolding</name>
     <description>SSM脚手架 - 纯Java类配置</description>
+    <url>https://github.com/WindMo/ssm-scaffolding</url>
+    <organization>
+        <name>风的影子</name>
+        <url>https://www.javamo.cn</url>
+    </organization>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
